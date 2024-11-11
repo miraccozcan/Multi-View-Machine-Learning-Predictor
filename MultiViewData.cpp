@@ -10,7 +10,7 @@ public:
     virtual ~IView() = default;
 };
 
-// Concrete Observer: Console View
+// Console View
 class ConsoleView : public IView {
 public:
     void displayPrediction(double prediction) override {
@@ -18,7 +18,7 @@ public:
     }
 };
 
-// Concrete Observer: Graphical View (simulated with console output)
+// Graphical View 
 class GraphicalView : public IView {
 public:
     void displayPrediction(double prediction) override {
@@ -26,7 +26,7 @@ public:
     }
 };
 
-// Subject class: Model Trainer
+// Model Trainer
 class ModelTrainer {
 private:
     std::vector<double> weights;
@@ -62,16 +62,16 @@ public:
         weights.resize(steps);
 
         bool modelAccurate = false;
-        int termCount = 1;  // Start with the first term (sin(x) = x)
+        int termCount = 1;  // (sin(x) = x)
 
         while (!modelAccurate) {
-            // Generate the first quarter of the sine wave with the current number of terms
+            // first quarter of the sine wave
             for (int i = 0; i <= steps / 4; ++i) {
                 time = P * (double)i / steps;
                 double x = w * time;
                 weights[i] = 0.0;
 
-                // Add terms up to the current term count
+                // add terms up to the current term count
                 for (int n = 0; n < termCount; ++n) {
                     int power = 2 * n + 1;
                     double term = (pow(-1, n) * pow(x, power)) / factorial(power);
@@ -86,7 +86,7 @@ public:
                 #endif
             }
 
-            // Mirror the first quarter to generate the rest of the sine wave
+            // mirror the first quarter
             for (int i = steps / 4; i < steps / 2; ++i) {
                 weights[i] = weights[steps / 2 - i];
             }
@@ -97,7 +97,7 @@ public:
             if (errorAnalysis() == 0) {
                 modelAccurate = true;
             } else {
-                ++termCount;  // Increase the number of terms for the next iteration
+                ++termCount; 
             }
         }
 
