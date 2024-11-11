@@ -1,5 +1,7 @@
 # Multi-View-Machine-Learning-Predictor
 **SED505 Assignment 2**
+Mirac Ozcan 181468216
+Paschal Ibeh 147295216
 
 ## Output
 ![Output](https://i.ibb.co/xD9Z9B2/image.png)
